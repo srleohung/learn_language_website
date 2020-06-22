@@ -4,6 +4,7 @@ from pygame import mixer
 import tempfile
 import time
 import csv
+import os.path
 
 def speak(sentence, lang):
     with tempfile.NamedTemporaryFile(delete=True) as fp:
@@ -48,7 +49,15 @@ def save_ko(sentence, filename):
 with open('notes.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for row in csv_reader:
-        save_en(row[0].strip(), "en/" + row[0].strip())
-        save_zh_tw(row[1].strip(), "zh-tw/" + row[0].strip())
-        save_ja(row[2].strip(), "ja/" + row[0].strip())
-        save_ko(row[3].strip(), "ko/" + row[0].strip())
+        # en
+        if not os.path.exists("en/" + row[0].strip() + ".mp3"):
+            save_en(row[0].strip(), "en/" + row[0].strip())
+        # zh-tw
+        if not os.path.exists("zh-tw/" + row[0].strip() + ".mp3"):
+            save_zh_tw(row[1].strip(), "zh-tw/" + row[0].strip())
+        # ja
+        if not os.path.exists("ja/" + row[0].strip() + ".mp3"):
+            save_ja(row[2].strip(), "ja/" + row[0].strip())
+        # ko
+        if not os.path.exists("ko/" + row[0].strip() + ".mp3"):
+            save_ko(row[3].strip(), "ko/" + row[0].strip())
