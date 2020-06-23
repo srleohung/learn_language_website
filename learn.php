@@ -31,6 +31,10 @@
             <table class="table">
                 <tbody>
                     <tr>
+                        <td>進度</td>
+                        <td><a href='learn.php?row=<?php echo $rowNumber + 1; ?>'><?php echo $rowNumber.'/'.count($rows); ?></a></td>
+                    </tr>
+                    <tr>
                         <td>英語</td>
                         <td><?php echo trim($row[0]); ?></td>
                     </tr>
@@ -61,10 +65,6 @@
                     <tr>
                         <td>韓語發音</td>
                         <td><audio controls><source src="ko/<?php echo trim($row[0]); ?>.mp3" type="audio/mpeg"></audio></td>
-                    </tr>
-                    <tr>
-                        <td>進度</td>
-                        <td><a href='learn.php?row=<?php echo $rowNumber + 1; ?>'><?php echo $rowNumber.'/'.count($rows); ?></a></td>
                     </tr>
                 </tbody>
             </table>
