@@ -12,7 +12,7 @@
                 $rowNumber = 0;
                 // Read csv file
                 if (($handle = fopen('notes.csv', 'r')) !== false) {
-                    while (($_row = fgetcsv($handle, 1000, ',')) !== false) {
+                    while (($_row = fgetcsv($handle, ',')) !== false) {
                         array_push($rows, $_row);
                     }
                     fclose($handle);
@@ -32,7 +32,7 @@
                 <tbody>
                     <tr>
                         <td>進度</td>
-                        <td><a href='learn.php?row=<?php echo $rowNumber + 1; ?>'><?php echo $rowNumber.'/'.count($rows); ?></a></td>
+                        <td><a href='learn.php?row=<?php echo rand(0, count($rows)-1); ?>'><?php echo $rowNumber.'/'.(count($rows)-1); ?></a></td>
                     </tr>
                     <tr>
                         <td>英語</td>
